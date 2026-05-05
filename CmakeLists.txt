@@ -2,11 +2,15 @@ cmake_minimum_required(VERSION 4.1)
 project(fazededge C)
 set(CMAKE_C_STANDARD 23)
 set(CMAKE_C_STANDARD_REQUIRED True)
+include(FetchContent)
 
 ### Dependencies ###
+add_subdirectory(SDL EXCLUDE_FROM_ALL)
 
 ### Executable ###
 include_directories(${PROJECT_NAME} include)
 add_executable(${PROJECT_NAME}
         src/main.c
 )
+
+target_link_libraries(${PROJECT_NAME} PRIVATE SDL3::SDL3)
